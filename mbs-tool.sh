@@ -31,10 +31,13 @@ function_list=("${function_list_main[@]}" "${function_list_trydent[@]}")
 
 INSTANCE=""
 while [[ $INSTANCE = "" ]]; do
-  echo "Choice action"
+  echo "Let's do something!"
+
   select INSTANCE in "${function_list[@]}"; do
     if [[ $INSTANCE ]]; then
-      $INSTANCE
+      run_function_array=("${INSTANCE[@]//,/}")
+      run_function=${run_function_array[${#run_function_array[@]}-1]}
+      ${run_function}
     else
       quit
     fi
