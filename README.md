@@ -3,8 +3,7 @@
 
 ### Install
 ```bash
-chmod +x mbs-tool.sh
-ln -s $PWD/mbs-tool.sh /usr/local/bin/mbs-tool
+make install
 ```
 
 ### Run

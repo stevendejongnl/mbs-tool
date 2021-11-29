@@ -1,0 +1,30 @@
+name: "Trydent"
+functions:
+  docker_yaml_check:
+    command: >
+
+      docker_compose_yml="${run_dir}/docker-compose.yml"\n
+      docker_compose_override_yml="${run_dir}/docker-compose.override.yml"\n
+      docker_compose_run="-f ${docker_compose_yml}"\n
+
+      if ! test -f "${docker_compose_yml}"; then\n
+        printf "$docker_compose_yml doesn't exists."\n
+      fi\n
+      if test -f "${docker_compose_override_yml}"; then\n
+        docker_compose_run="${docker_compose_run} -f ${docker_compose_override_yml}"\n
+      fi\n
+
+  delete_sphinx:
+    command: ["echo", "start delete_sphinx"]
+    command: ["sleep", "1"]
+    command: ["echo", "end delete_sphinx"]
+
+  update_database:
+    command: ["echo", "start update_database"]
+    command: ["sleep", "1"]
+    command: ["echo", "end update_database"]
+
+  flush_redis:
+    command: ["echo", "start flush_redis"]
+    command: ["sleep", "1"]
+    command: ["echo", "end flush_redis"]
